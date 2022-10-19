@@ -3,8 +3,6 @@
 ### 要求三：SQL CRUD 
 ### 利用要求二建立的資料庫和資料表，寫出能夠滿足以下要求的 SQL 指令
 
-<br>
-
 * 使用 INSERT 指令新增一筆資料到 member 資料表中，這筆資料的 username 和 password 欄位必須是 test。接著繼續新增至少 4 筆隨意的資料。 <br>
 ![Markdown Logo](/week-5/screenshot/3-1.png)
 
@@ -25,8 +23,6 @@
 ### 要求四：SQL CRUD 
 ### 利用要求二建立的資料庫和資料表，寫出能夠滿足以下要求的 SQL 指令
 
-<br>
-
 * 取得 member 資料表中，總共有幾筆資料 ( 幾位會員 )。![Markdown Logo](/week-5//screenshot/4-1.png)
 
 * 取得 member 資料表中，所有會員 follower_count 欄位的總和。![Markdown Logo](/week-5//screenshot/4-2.png)
@@ -36,8 +32,6 @@
 <br>
 
 ### 要求五：SQL JOIN (Optional)
-
-<br>
 
 * 使用 SELECT 搭配 JOIN 語法，取得所有留言，結果須包含留言者會員的姓名。![Markdown Logo](/week-5//screenshot/5-1.png)
 
