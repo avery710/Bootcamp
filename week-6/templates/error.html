@@ -1,0 +1,15 @@
+ {% extends "layout.html" %}
+
+{% block title %}Error{% endblock %}
+
+{% block header %}
+    <h2>失敗頁面</h2>
+{% endblock %}
+
+{% block content %}
+    <div class="box">
+        <p>{{ message }}</p>
+        <a href="{{ url_for('index') }}">返回首頁</a>
+    </div>
+    
+{% endblock %}
