@@ -12,7 +12,7 @@ Session(app)
 dbconfig = {
     "host" : "localhost",
     "user" : "root",
-    "password" : "angeldemima0710",
+    "password" : "",
     "database" : "member_sys"
 }
 
