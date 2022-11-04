@@ -9,8 +9,6 @@ app.config["SESSION_TYPE"] = 'filesystem'
 Session(app)
 
 
-# @app.before_first_request
-# def before_first_request():
 dbconfig = {
     "host" : "localhost",
     "user" : "root",
@@ -34,15 +32,6 @@ def index():
 
 @app.route("/signup", methods=["POST"])
 def signup():
-    # try:
-    #     my_db = mysql.connector.connect(
-    #         host = "localhost",
-    #         user = "root",
-    #         password = P,
-    #         database = "member_sys"
-    #     )
-    #     my_cursor = my_db.cursor()
-
     connection = cnx_pool.get_connection()
     my_cursor = connection.cursor()
 
@@ -64,22 +53,10 @@ def signup():
             
             my_cursor.execute(insert_new_member, (name, username, password))
             return redirect(url_for('index'))
-    # finally:
-    #     my_cursor.close()
-    #     my_db.close()
 
 
 @app.route("/signin", methods=["POST"])
 def signin():
-    # try:
-    #     my_db = mysql.connector.connect(
-    #         host = "localhost",
-    #         user = "root",
-    #         password = P,
-    #         database = "member_sys"
-    #     )
-    #     my_cursor = my_db.cursor()
-
     connection = cnx_pool.get_connection()
     my_cursor = connection.cursor()
 
@@ -100,9 +77,6 @@ def signin():
             return redirect(url_for('member'))        
         else:
             return redirect(url_for('error', message="帳號或密碼輸入錯誤"))
-    # finally:
-    #     my_cursor.close()
-    #     my_db.close()
 
 
 @app.route("/error")
@@ -116,22 +90,11 @@ def member():
     if not session.get("name") and not session.get("id"):
         return redirect(url_for('index'))
 
-    # try:
-    #     my_db = mysql.connector.connect(
-    #         host = "localhost",
-    #         user = "root",
-    #         password = P,
-    #         database = "member_sys"
-    #     )
-    #     my_cursor = my_db.cursor()
 
     connection = cnx_pool.get_connection()
     my_cursor = connection.cursor()
 
     return render_template("member.html", name=session['name'])
-    # finally:
-    #     my_cursor.close()
-    #     my_db.close()
     
 
 @app.route("/api/member", methods=["GET", "PATCH"])
@@ -140,15 +103,6 @@ def fetch_api():
         username = request.args.get("username")
 
         if (username):
-            # try:
-            #     my_db = mysql.connector.connect(
-            #         host = "localhost",
-            #         user = "root",
-            #         password = P,
-            #         database = "member_sys"
-            #     )
-            #     my_cursor = my_db.cursor()
-
             connection = cnx_pool.get_connection()
             my_cursor = connection.cursor()
 
@@ -174,9 +128,6 @@ def fetch_api():
                     "data" : None
                 }
                 return jsonify(response)
-            # finally:
-            #     my_cursor.close()
-            #     my_db.close()
 
     if request.method == "PATCH":
         new_name = None
@@ -187,16 +138,6 @@ def fetch_api():
             new_name = json['name']
         else:
             return 'Content-Type not supported!'
-
-        # query mySQL database and update the name
-        # try:
-        #     my_db = mysql.connector.connect(
-        #         host = "localhost",
-        #         user = "root",
-        #         password = P,
-        #         database = "member_sys"
-        #     )
-        #     my_cursor = my_db.cursor()
 
         connection = cnx_pool.get_connection()
         my_cursor = connection.cursor()
@@ -222,10 +163,6 @@ def fetch_api():
                 "error": False
             }
             return jsonify(res)
-            
-        # finally:
-        #     my_cursor.close()
-        #     my_db.close()
 
         
 @app.route("/signout")
